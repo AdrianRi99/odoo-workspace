@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qm_freigabe_user,qm.freigabe.user,model_qm_freigabe,group_qm_user,1,1,1,0
+access_qm_freigabe_manager,qm.freigabe.manager,model_qm_freigabe,group_qm_manager,1,1,1,1

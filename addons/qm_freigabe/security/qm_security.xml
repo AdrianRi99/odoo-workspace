@@ -1,0 +1,17 @@
+<odoo>
+    <record id="module_category_qm" model="ir.module.category">
+        <field name="name">Qualitätsmanagement</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="group_qm_user" model="res.groups">
+        <field name="name">QM-Mitarbeiter</field>
+        <field name="category_id" ref="module_category_qm"/>
+    </record>
+
+    <record id="group_qm_manager" model="res.groups">
+        <field name="name">QM-Manager</field>
+        <field name="category_id" ref="module_category_qm"/>
+        <field name="implied_ids" eval="[(4, ref('group_qm_user'))]"/>
+    </record>
+</odoo>

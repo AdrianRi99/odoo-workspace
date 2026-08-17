@@ -1,0 +1,20 @@
+{
+    "name": "QM Chargenfreigabe",
+    "version": "1.0",
+    "license": "LGPL-3",
+    "summary": "Qualitätsfreigabe für Chargen mit Auslieferungssperre",
+    "category": "Inventory/Inventory",
+    "author": "Adrian",
+    "depends": ["stock", "mail"],
+    "data": [
+        "security/qm_security.xml",
+        "security/ir.model.access.csv",
+        "data/sequence.xml",
+        "views/qm_freigabe_views.xml",
+        "views/stock_lot_views.xml",
+        "views/res_config_settings_views.xml",
+        "views/menus.xml",
+    ],
+    "installable": True,
+    "application": True,
+}

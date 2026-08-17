@@ -1,0 +1,6 @@
+<odoo>
+    <menuitem id="menu_qm_root" name="Qualität" sequence="15"
+              groups="qm_freigabe.group_qm_user"/>
+    <menuitem id="menu_qm_freigabe" name="Chargenfreigaben"
+              parent="menu_qm_root" action="action_qm_freigabe"/>
+</odoo>

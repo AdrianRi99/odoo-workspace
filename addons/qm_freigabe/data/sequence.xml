@@ -1,0 +1,8 @@
+<odoo>
+    <record id="seq_qm_freigabe" model="ir.sequence">
+        <field name="name">QM Freigabe</field>
+        <field name="code">qm.freigabe</field>
+        <field name="prefix">QM/</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>

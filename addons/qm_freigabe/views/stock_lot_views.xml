@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_stock_lot_form_qm" model="ir.ui.view">
+        <field name="name">stock.lot.form.qm</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="qm_freigabe_id"/>
+                <field name="qm_state"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
