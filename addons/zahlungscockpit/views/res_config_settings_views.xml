@@ -1,0 +1,23 @@
+<odoo>
+    <record id="res_config_settings_view_form_cockpit" model="ir.ui.view">
+        <field name="name">res.config.settings.form.cockpit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Zahlungscockpit" name="zahlungscockpit">
+                    <block title="Warnschwellen">
+                        <setting string="Score-Schwelle"
+                                 help="Unter diesem Score wird eine Aktivität erzeugt">
+                            <field name="cockpit_score_schwelle"/>
+                        </setting>
+                        <setting string="Skonto-Schwelle"
+                                 help="Ab dieser verpassten Skonto-Summe wird gewarnt">
+                            <field name="cockpit_skonto_schwelle"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

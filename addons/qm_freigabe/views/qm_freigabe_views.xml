@@ -1,5 +1,4 @@
 <odoo>
-    <!-- FORM -->
     <record id="view_qm_freigabe_form" model="ir.ui.view">
         <field name="name">qm.freigabe.form</field>
         <field name="model">qm.freigabe</field>
@@ -32,17 +31,17 @@
                         <group>
                         </group>
                     </group>
-                    <group string="Bemerkung">
-                        <field name="bemerkung" nolabel="1"/>
-                    </group>
-                    <group string="Verknüpfte Chargen">
-                        <field name="lot_ids" nolabel="1">
-                            <tree>
-                                <field name="name"/>
-                                <field name="product_id"/>
-                            </tree>
-                        </field>
-                    </group>
+
+                    <separator string="Bemerkung"/>
+                    <field name="bemerkung" placeholder="Bemerkung eingeben..."/>
+
+                    <separator string="Verknüpfte Chargen"/>
+                    <field name="lot_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="product_id"/>
+                        </tree>
+                    </field>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
@@ -53,7 +52,20 @@
         </field>
     </record>
 
-    <!-- SEARCH -->
+    <record id="view_qm_freigabe_list" model="ir.ui.view">
+        <field name="name">qm.freigabe.list</field>
+        <field name="model">qm.freigabe</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state == 'freigegeben'"
+                  decoration-danger="state == 'gesperrt'"
+                  decoration-muted="state == 'draft'">
+                <field name="name"/>
+                <field name="pruefdatum"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
     <record id="view_qm_freigabe_search" model="ir.ui.view">
         <field name="name">qm.freigabe.search</field>
         <field name="model">qm.freigabe</field>
@@ -75,22 +87,6 @@
         </field>
     </record>
 
-    <!-- LIST -->
-    <record id="view_qm_freigabe_list" model="ir.ui.view">
-        <field name="name">qm.freigabe.list</field>
-        <field name="model">qm.freigabe</field>
-        <field name="arch" type="xml">
-            <tree decoration-success="state == 'freigegeben'"
-                  decoration-danger="state == 'gesperrt'"
-                  decoration-muted="state == 'draft'">
-                <field name="name"/>
-                <field name="pruefdatum"/>
-                <field name="state" widget="badge"/>
-            </tree>
-        </field>
-    </record>
-
-    <!-- ACTION -->
     <record id="action_qm_freigabe" model="ir.actions.act_window">
         <field name="name">Chargenfreigaben</field>
         <field name="res_model">qm.freigabe</field>

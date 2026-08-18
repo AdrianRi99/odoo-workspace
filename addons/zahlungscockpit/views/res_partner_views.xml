@@ -1,0 +1,78 @@
+<odoo>
+    <record id="view_partner_form_cockpit" model="ir.ui.view">
+        <field name="name">res.partner.form.cockpit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Zahlungsverhalten" name="zahlungsverhalten">
+                    <group>
+                        <group>
+                            <field name="zahlungs_bewertung" widget="badge"
+                                   decoration-success="zahlungs_bewertung == 'gut'"
+                                   decoration-warning="zahlungs_bewertung == 'mittel'"
+                                   decoration-danger="zahlungs_bewertung == 'schlecht'"/>
+                            <field name="zuverlaessigkeit_score"
+                                   widget="progressbar"/>
+                        </group>
+                        <group>
+                            <field name="durchschnitt_verzug"/>
+                            <field name="anzahl_ueberfaellig"/>
+                            <field name="skonto_verpasst_summe"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_graph_cockpit" model="ir.ui.view">
+        <field name="name">res.partner.graph.cockpit</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <graph string="Zahlungsverhalten" type="bar">
+                <field name="name" type="row"/>
+                <field name="zuverlaessigkeit_score" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_partner_pivot_cockpit" model="ir.ui.view">
+        <field name="name">res.partner.pivot.cockpit</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <pivot string="Zahlungsverhalten">
+                <field name="zahlungs_bewertung" type="row"/>
+                <field name="durchschnitt_verzug" type="measure"/>
+                <field name="skonto_verpasst_summe" type="measure"/>
+                <field name="anzahl_ueberfaellig" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_zahlungscockpit" model="ir.actions.act_window">
+        <field name="name">Zahlungscockpit</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">graph,pivot,tree,form</field>
+        <field name="domain">[('zuverlaessigkeit_score', '&gt;', 0)]</field>
+        <field name="context">{'search_default_auffaellig': 1}</field>
+    </record>
+
+    <record id="view_partner_search_cockpit" model="ir.ui.view">
+        <field name="name">res.partner.search.cockpit</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="auffaellig" string="Auffällig"
+                        domain="[('zahlungs_bewertung', '=', 'schlecht')]"/>
+                <filter name="skonto_verpasst" string="Skonto verpasst"
+                        domain="[('skonto_verpasst_summe', '>', 0)]"/>
+                <separator/>
+                <group expand="0" string="Gruppieren nach">
+                    <filter name="group_bewertung" string="Bewertung"
+                            context="{'group_by': 'zahlungs_bewertung'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

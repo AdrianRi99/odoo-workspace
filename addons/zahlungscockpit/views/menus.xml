@@ -1,0 +1,5 @@
+<odoo>
+    <menuitem id="menu_cockpit_root" name="Zahlungscockpit" sequence="20"/>
+    <menuitem id="menu_cockpit_partner" name="Partner-Übersicht"
+              parent="menu_cockpit_root" action="action_zahlungscockpit"/>
+</odoo>
