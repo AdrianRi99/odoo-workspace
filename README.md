@@ -116,18 +116,3 @@ docker compose exec web odoo -u mrp_qm_tracking -d <DB_NAME> --test-enable --sto
 
 ---
 
-## Technische Konzepte (Auswahl)
-
-Die Module demonstrieren u. a.:
-
-- Eigene Modelle und Vererbung (`_inherit`) bestehender Modelle (`stock.lot`, `account.move`, `res.partner`, `mrp.production`)
-- Berechnete Felder mit `@api.depends`, auch über Beziehungen hinweg
-- Überschreiben von Framework-Methoden (`create`, `button_validate`, `action_post`, `button_mark_done`) mit `super()` — inklusive der Unterscheidung, ob Logik vor oder nach `super()` gehört
-- Alle drei Beziehungsarten (`Many2one`, `One2many`, `Many2many`) inkl. related und computed
-- Konfiguration über `res.config.settings` und `ir.config_parameter`
-- Sicherheitsgruppen, rollenbasierte Zugriffsrechte, gruppenabhängige Sichtbarkeit
-- Geplante Aufgaben (`ir.cron`) und Aktivitäten (`mail.activity.mixin`)
-- Views: Statusbar, Smart Buttons, Notebook-Reiter, Graph, Pivot, Suchansichten, geerbte Views per `xpath`
-- Dauerhafte Aufzeichnung statt Berechnung für Audit-/Rückverfolgungsdaten; Indizes und `ondelete` auf Beziehungen
-
----
