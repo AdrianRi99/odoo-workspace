@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_stock_lot_form_rueckverfolgung" model="ir.ui.view">
+        <field name="name">stock.lot.form.rueckverfolgung</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_zeige_betroffene_produkte" type="object"
+                        class="oe_stat_button" icon="fa-arrow-right"
+                        invisible="anzahl_betroffene_produkte == 0">
+                    <field name="anzahl_betroffene_produkte" widget="statinfo"
+                           string="Betroffene Produkte"/>
+                </button>
+                <button name="action_zeige_rohstoffe" type="object"
+                        class="oe_stat_button" icon="fa-arrow-left"
+                        invisible="anzahl_verwendete_rohstoffe == 0">
+                    <field name="anzahl_verwendete_rohstoffe" widget="statinfo"
+                           string="Rohstoffe"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

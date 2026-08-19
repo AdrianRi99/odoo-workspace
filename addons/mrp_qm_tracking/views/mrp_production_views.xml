@@ -1,0 +1,21 @@
+<odoo>
+    <record id="view_mrp_production_form_qm" model="ir.ui.view">
+        <field name="name">mrp.production.form.qm</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="before">
+                <div class="alert alert-warning" role="alert"
+                     invisible="not hat_gesperrte_rohstoffe">
+                    ⚠ Diese Produktion enthält gesperrte Rohstoff-Chargen
+                    und kann nicht abgeschlossen werden.
+                </div>
+                <field name="hat_gesperrte_rohstoffe" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="erzeugte_freigabe_ids" widget="many2many_tags"
+                       readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

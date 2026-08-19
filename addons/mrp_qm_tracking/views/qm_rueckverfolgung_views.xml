@@ -1,0 +1,65 @@
+<odoo>
+
+    <record id="view_rueckverfolgung_search" model="ir.ui.view">
+        <field name="name">qm.rueckverfolgung.search</field>
+        <field name="model">qm.rueckverfolgung</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="produkt_lot_id"/>
+                <field name="rohstoff_lot_id"/>
+                <field name="rohstoff_produkt_id"/>
+                <separator/>
+                <group expand="0" string="Gruppieren nach">
+                    <filter name="group_produkt_lot" string="Produkt-Charge"
+                            context="{'group_by': 'produkt_lot_id'}"/>
+                    <filter name="group_rohstoff" string="Rohstoff"
+                            context="{'group_by': 'rohstoff_produkt_id'}"/>
+                    <filter name="group_production" string="Fertigungsauftrag"
+                            context="{'group_by': 'production_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_rueckverfolgung_list" model="ir.ui.view">
+        <field name="name">qm.rueckverfolgung.list</field>
+        <field name="model">qm.rueckverfolgung</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <field name="datum"/>
+                <field name="production_id"/>
+                <field name="produkt_lot_id"/>
+                <field name="rohstoff_produkt_id"/>
+                <field name="rohstoff_lot_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_rueckverfolgung_form" model="ir.ui.view">
+        <field name="name">qm.rueckverfolgung.form</field>
+        <field name="model">qm.rueckverfolgung</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="datum"/>
+                        <field name="production_id"/>
+                        <field name="produkt_lot_id"/>
+                        <field name="rohstoff_produkt_id"/>
+                        <field name="rohstoff_lot_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rueckverfolgung" model="ir.actions.act_window">
+        <field name="name">Rückverfolgung</field>
+        <field name="res_model">qm.rueckverfolgung</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_rueckverfolgung_root" name="Rückverfolgung" sequence="16"/>
+    <menuitem id="menu_rueckverfolgung" name="Chargen-Rückverfolgung"
+              parent="menu_rueckverfolgung_root" action="action_rueckverfolgung"/>
+</odoo>
